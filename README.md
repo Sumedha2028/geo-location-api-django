@@ -1,161 +1,132 @@
-<div align="center">
+#  Osdag Bridge UI
 
-# Geo Location API (Django)
-
-Hierarchical location data service for
-**States → Districts**
-
-Built using Django REST Framework for backend API development.
-
-[![Django](https://img.shields.io/badge/Django-6.0-092E20?style=flat\&logo=django)]()
-[![DRF](https://img.shields.io/badge/Django%20REST-Framework-red)]()
-[![SQLite](https://img.shields.io/badge/SQLite-Database-blue)]()
-
-</div>
+A React-based frontend interface for bridge design inputs and environmental data visualization, inspired by Osdag workflows.
 
 ---
 
 ##  Overview
 
-This project provides a REST API for managing and retrieving location data.
+This project provides an interactive UI to:
 
-It supports:
-
-* Fetching all available states
-* Fetching districts based on selected state
-* Managing data using Django admin panel
+- Select State and District dynamically
+- Fetch location-based environmental data
+- Customize bridge geometry parameters
+- Visualize bridge cross-section
+- Get design recommendations
 
 ---
 
 ##  Features
 
-* REST API for hierarchical location data
-* State → District relational mapping
-* Admin interface for data management
-* Clean and modular Django project structure
+- State & District selection (API based)
+- Wind speed & seismic data display
+- Temperature insights
+- Geometry customization:
+  - Girder spacing
+  - Number of girders (auto-calculated)
+  - Deck overhang
+- Validation warnings
+- Interactive modal UI
+- Bridge cross-section display
+
+---
+
+##  Logic Implemented
+
+- Dynamic API calls using Axios
+- Auto-calculation:
+
+girders = (overall width - overhang) / spacing
+
+- Input validation:
+  - Spacing too small / large
+  - Overhang limits
 
 ---
 
 ##  Tech Stack
 
-* **Backend:** Django, Django REST Framework
-* **Database:** SQLite (default)
-
----
-
-##  Backend Setup
-
-```bash
-cd backend
-
-# Create virtual environment
-python -m venv venv
-
-# Activate (Windows)
-venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
----
-
-##  Database Setup
-
-```bash
-# Apply migrations
-python manage.py migrate
-
-# Create superuser (optional)
-python manage.py createsuperuser
-```
-
----
-
-##  Run Server
-
-```bash
-python manage.py runserver
-```
-
-Backend will run at:
-
-```
-http://127.0.0.1:8000/
-```
-
----
-
-##  API Endpoints
-
-| Method | Endpoint                     | Description            |
-| ------ | ---------------------------- | ---------------------- |
-| GET    | `/api/states/`               | Get all states         |
-| GET    | `/api/districts/<state_id>/` | Get districts by state |
-
----
-
-##  Example Response
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Telangana"
-  }
-]
-```
-
----
-
-##  Admin Panel
-
-Access:
-
-```
-http://127.0.0.1:8000/admin/
-```
-
-Use admin panel to:
-
-* Add states
-* Add districts
-* Manage location data
+- React.js
+- Axios
+- JavaScript
+- HTML + CSS
+- Django (Backend)
 
 ---
 
 ##  Project Structure
 
-```
-backend/
-│
-├── config/                # Django project settings
-│
-├── location/              # Location app
-│   ├── models.py
-│   ├── views.py
-│   ├── serializers.py
-│   ├── urls.py
-│   └── admin.py
-│
-├── geometry/              # (Optional future module)
-├── materials/             # (Optional future module)
-│
-├── manage.py
-└── requirements.txt
-```
+geo-location-api-django/
+  backend/
+  frontend/
+    public/
+    src/
+      assets/
+        bridge.png
+      App.js
+      index.js
 
 ---
 
-##  Notes
+##  Installation & Setup
 
-* Uses SQLite for simplicity (can be extended to PostgreSQL)
-* Designed with scalable app structure
-* Focused on backend API development
+Clone repo:
+
+git clone https://github.com/Sumedha2028/geo-location-api-django.git
+
+Go to frontend:
+
+cd frontend
+
+Install:
+
+npm install
+
+Run:
+
+npm start
+
+App runs at:
+http://localhost:3000
 
 ---
 
-##  Submission Context
+##  Backend Setup
 
-This project was developed as part of a backend screening task
-to demonstrate Django REST API skills and project structuring.
+cd backend
+
+venv\Scripts\activate
+
+python manage.py runserver
+
+Backend runs at:
+http://localhost:8000
+
+---
+
+##  Features Demo
+
+- Dynamic dropdown selection
+- Live data rendering
+- Geometry modal with auto calculation
+- Validation warnings
+
+---
+
+##  Future Improvements
+
+- Real-time bridge visualization
+- Osdag integration
+- Better UI
+
+---
+
+##  Author
+
+BODUGAM SUMEDHA
+
+---
+
+##  Note
+
+This project was developed as part of an internship screening task.
